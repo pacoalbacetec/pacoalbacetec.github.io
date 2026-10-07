@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="post{{ if .Params.capitular | default (eq .Section "posts") }} con-capitular{{ end }}">
+  <header class="post-cabecera">
+    {{ if eq .Section "posts" }}
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+      <span class="punto" aria-hidden="true">·</span>
+      {{ partial "cafes.html" . }}
+    </p>
+    {{ end }}
+    <h1 class="post-titulo">{{ .Title }}</h1>
+    {{ with .Params.subtitulo }}<p class="post-subtitulo">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="prosa">
+    {{ .Content }}
+  </div>
+
+  {{ with .GetTerms "tags" }}
+  <footer class="post-pie">
+    <ul class="etiquetas">
+      {{ range . }}<li><a class="etiqueta" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+    </ul>
+  </footer>
+  {{ end }}
+</article>
+
+{{ if eq .Section "posts" }}
+<nav class="vecinos" aria-label="Más entradas">
+  {{ with .PrevInSection }}<a class="vecino vecino-ant" href="{{ .RelPermalink }}"><small>← más reciente</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+  {{ with .NextInSection }}<a class="vecino vecino-sig" href="{{ .RelPermalink }}"><small>anterior →</small>{{ .Title }}</a>{{ end }}
+</nav>
+{{ end }}
+{{ end }}
