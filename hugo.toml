@@ -1,4 +1,9 @@
 baseURL = "https://pacoalbacetec.dev/"
 languageCode = "es"
 title = "Francisco Albacete Chicano"
+theme = "candil"
 disableKinds = ["page", "section", "taxonomy", "term", "RSS", "sitemap", "404"]
+
+[params]
+  author = "Francisco Albacete Chicano"
+  description = "Francisco Albacete Chicano: GitHub, LinkedIn y OpenStreetMap."

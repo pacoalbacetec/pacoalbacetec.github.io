@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="hola">
+  <p class="saludo" data-saludo{{ with site.Params.saludo }} data-fijo{{ end }}>{{ site.Params.saludo | default "Hola, pasa" }}</p>
+  <h1 class="hola-titulo">{{ site.Params.titular | default site.Title | markdownify }}</h1>
+  {{ with site.Params.intro }}<div class="hola-intro">{{ . | markdownify }}</div>{{ end }}
+
+  {{ with site.Params.ahora }}
+  <aside class="nota nota-ahora" aria-label="Ahora mismo">
+    <span class="nota-cinta" aria-hidden="true"></span>
+    <p class="nota-titulo">ahora mismo…</p>
+    {{ . | markdownify }}
+  </aside>
+  {{ end }}
+</section>
+
+{{ $posts := where site.RegularPages "Section" (site.Params.mainSection | default "posts") }}
+<section class="ultimas">
+  <h2 class="seccion-titulo"><span>Lo último</span></h2>
+  <ul class="lista-posts">
+    {{ range first (site.Params.homePosts | default 6) $posts }}
+      {{ partial "post-item.html" . }}
+    {{ else }}
+      <li class="vacio">Todavía no hay nada por aquí… pero ya está el café puesto.</li>
+    {{ end }}
+  </ul>
+  {{ if gt (len $posts) (site.Params.homePosts | default 6) }}
+  <p class="ver-todo"><a href="{{ "posts/" | relURL }}">Todo el archivo →</a></p>
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,30 @@
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header wrap">
+  <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }}, inicio">
+    {{/* Una ventanita: de día se ve el cielo, de noche se enciende la luz de dentro */}}
+    <svg class="ventana" viewBox="0 0 40 40" aria-hidden="true">
+      <path class="ventana-arco" d="M8 36V17a12 12 0 0 1 24 0v19z"/>
+      <path class="ventana-cristal" d="M11 33V17.5a9 9 0 0 1 18 0V33z"/>
+      <path class="ventana-marco" d="M20 9v24M11 21h18"/>
+      <path class="ventana-repisa" d="M5 36.5h30"/>
+      <circle class="ventana-maceta" cx="31" cy="34" r="2.6"/>
+    </svg>
+    <span class="brand-nombre">{{ site.Title }}</span>
+  </a>
+
+  <nav class="nav" aria-label="Principal">
+    {{ $current := . }}
+    {{ range site.Menus.main }}
+      <a href="{{ .URL | relURL }}"{{ if or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+
+  <button class="candil" type="button" aria-label="Encender el candil (modo noche)" title="Encender el candil">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <circle class="candil-halo" cx="16" cy="13" r="11"/>
+      <path class="candil-llama" d="M16 6c2.2 2.8 3.4 4.8 3.4 6.8a3.4 3.4 0 0 1-6.8 0c0-2 1.2-4 3.4-6.8z"/>
+      <path class="candil-cuerpo" d="M9 19.5h14l-1.6 5.2a2 2 0 0 1-1.9 1.3h-7a2 2 0 0 1-1.9-1.3z"/>
+      <path class="candil-asa" d="M23 21.5c2.6 0 3.6 1.2 3.6 2.4s-1.2 2.1-3.6 2.1"/>
+    </svg>
+  </button>
+</header>

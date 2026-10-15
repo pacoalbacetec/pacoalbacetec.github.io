@@ -1,0 +1,5 @@
+<li class="post-item">
+  <time class="post-item-fecha" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+  <a class="post-item-titulo" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{ partial "cafes.html" . }}
+</li>

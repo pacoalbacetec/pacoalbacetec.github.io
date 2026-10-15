@@ -1,0 +1,8 @@
+{{ define "main" }}
+<header class="pagina-cabecera"><h1>{{ .Title }}</h1></header>
+<ul class="etiquetas etiquetas-grandes">
+  {{ range .Data.Terms.ByCount }}
+  <li><a class="etiqueta" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <small>{{ .Count }}</small></a></li>
+  {{ end }}
+</ul>
+{{ end }}

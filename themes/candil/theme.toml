@@ -1,0 +1,7 @@
+name = "candil"
+license = "MIT"
+description = "Un tema cálido y minimalista para blogs personales: papel, luz de lámpara y detallitos hechos a mano."
+min_version = "0.120.0"
+tags = ["blog", "minimal", "personal", "dark mode", "cozy"]
+[author]
+  name = "Francisco Chicano"
