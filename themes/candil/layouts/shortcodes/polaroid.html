@@ -1,5 +1,0 @@
-{{/* Foto con marco de polaroid y pie escrito a mano. Uso: {{< polaroid src="x.jpg" pie="Lisboa, otoño" >}} */}}
-<figure class="polaroid">
-  <img src="{{ .Get "src" }}" alt="{{ .Get "alt" | default (.Get "pie") }}" loading="lazy">
-  {{ with .Get "pie" }}<figcaption>{{ . }}</figcaption>{{ end }}
-</figure>

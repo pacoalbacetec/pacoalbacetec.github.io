@@ -1,6 +1,0 @@
-{{/* Una nota escrita a mano, pegada con celo. Uso: {{< nota >}}texto{{< /nota >}} */}}
-<aside class="nota{{ with .Get "lado" }} nota-{{ . }}{{ end }}">
-  <span class="nota-cinta" aria-hidden="true"></span>
-  {{ with .Get "titulo" }}<p class="nota-titulo">{{ . }}</p>{{ end }}
-  {{ .Inner | markdownify }}
-</aside>
